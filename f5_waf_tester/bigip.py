@@ -70,7 +70,7 @@ class ASM(BIGIP):
         request_url = 'events/requests/'
         if request:
             request_url = urljoin(request_url, str(request))
-        for i in xrange(max_retries):
+        for i in range(max_retries):
             res = self.get(request_url, filter=filter, select=select, top=top, skip=skip)
             if res.get('code') != 404:
                 return res
