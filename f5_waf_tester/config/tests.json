@@ -547,5 +547,56 @@
         }
       }
     ]
+  },
+  {
+    "id": "100000022",
+    "name": "HTTP Desync Attack Attempt",
+    "attack_type": "HTTP Request Smuggling",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": [
+      {
+        "applies_to": "request",
+        "payload": "POST / HTTP/1.1\r\nHost: {hostname}\r\nContent-Type: application/x-www-form-urlencoded\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: {user_agent}\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: en-US,en;q=0.9\r\nTransfer-Encoding: chunked\r\nContent-Length: 9\r\n\r\n0xF5=\"F5\"\r\n\r\n",
+        "expected_result": {
+          "type": "signature",
+          "value": "200018061"
+        }
+      }
+    ]
+  },
+  {
+    "id": "100000023",
+    "name": "SSRF attempt (AWS Metadata Server)",
+    "attack_type": "Server Side Request Forgery",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": [
+      {
+        "applies_to": "parameter",
+        "payload": "x=http://169.254.169.254/latest/meta-data/iam/security-credentials/role-name",
+        "expected_result": {
+          "type": "signature",
+          "value": "200018040"
+		}
+      }
+    ]
+  },
+  {
+    "id": "100000024",
+    "name": "SSRF attempt - Local network IP range 10.x.x.x",
+    "attack_type": "Server Side Request Forgery",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": [
+      {
+        "applies_to": "parameter",
+        "payload": "x=http://10.0.0.1:8080/",
+        "expected_result": {
+          "type": "signature",
+          "value": "200020201"
+		}
+      }
+    ]
   }
 ]
