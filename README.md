@@ -18,7 +18,8 @@ The tester tool covers testing of various basic attack types which include:
         "HTTP Parser Attack"    
         "XML External Entities (XXE)"    
         "Server-Side Request Forgery"    
-        "Server Side Code Injection"    
+        "Server Side Code Injection"
+        "HTTP Request Smuggling"
 
 
 # How it Works
