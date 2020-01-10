@@ -48,6 +48,8 @@ Fedora, ```sudo dnf install -y python-pip```
 
 Install the tool. ```pip install git+https://github.com/f5devcentral/f5-waf-tester.git```  
 
+The host machine needs to have connection to the BIG-IP management network as well the traffic network
+
 # How to Use
 
 #### 1. [Initial Setup] Create configuration file for the first time:  ```f5-waf-tester --init``` 
@@ -86,11 +88,11 @@ optional arguments:
   -c CONFIG, --config CONFIG
                         Configuration File Path. (default:
                         /usr/local/lib/python2.7/dist-
-                        packages/awaf_policy_validator/config/config.json)
+                        packages/f5-waf-tester/config/config.json)
   -t TESTS, --tests TESTS
                         Tests File Path. (default: /usr/local/lib/python2.7
                         /dist-
-                        packages/awaf_policy_validator/config/tests.json)
+                        packages/f5-waf-tester/config/tests.json)
   -r REPORT, --report REPORT
                         Report File Save Path. (default: report.json)
   ```
