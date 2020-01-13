@@ -18,7 +18,8 @@ The tester tool covers testing of various basic attack types which include:
         "HTTP Parser Attack"    
         "XML External Entities (XXE)"    
         "Server-Side Request Forgery"    
-        "Server Side Code Injection"    
+        "Server Side Code Injection"
+        "HTTP Request Smuggling"
 
 
 # How it Works
@@ -47,6 +48,8 @@ Ubuntu/Kali, ```sudo apt-get install -y python-pip```
 Fedora, ```sudo dnf install -y python-pip``` 
 
 Install the tool. ```pip install git+https://github.com/f5devcentral/f5-waf-tester.git```  
+
+The host machine needs to have connection to the BIG-IP management network as well the traffic network
 
 # How to Use
 
@@ -86,11 +89,11 @@ optional arguments:
   -c CONFIG, --config CONFIG
                         Configuration File Path. (default:
                         /usr/local/lib/python2.7/dist-
-                        packages/awaf_policy_validator/config/config.json)
+                        packages/f5-waf-tester/config/config.json)
   -t TESTS, --tests TESTS
                         Tests File Path. (default: /usr/local/lib/python2.7
                         /dist-
-                        packages/awaf_policy_validator/config/tests.json)
+                        packages/f5-waf-tester/config/tests.json)
   -r REPORT, --report REPORT
                         Report File Save Path. (default: report.json)
   ```
