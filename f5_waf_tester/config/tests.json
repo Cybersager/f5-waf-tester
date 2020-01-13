@@ -574,11 +574,11 @@
     "vectors": [
       {
         "applies_to": "parameter",
-        "payload": "x=http://169.254.169.254/latest/meta-data/iam/security-credentials/role-name",
+        "payload": "http://169.254.169.254/latest/meta-data/iam/security-credentials/role-name",
         "expected_result": {
           "type": "signature",
           "value": "200018040"
-		}
+        }
       }
     ]
   },
@@ -590,12 +590,12 @@
     "CVE": "",
     "vectors": [
       {
-        "applies_to": "parameter",
-        "payload": "x=http://10.0.0.1:8080/",
+        "applies_to": "request",
+        "payload": "GET http://10.240.200.172/ HTTP/1.1\r\nHost: {hostname}\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: {user_agent}\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: en-US,en;q=0.9\r\n\r\n",
         "expected_result": {
           "type": "signature",
           "value": "200020201"
-		}
+        }
       }
     ]
   }
