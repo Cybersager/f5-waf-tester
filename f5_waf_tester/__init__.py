@@ -1,12 +1,12 @@
 import re
+import os
 import sys
-import ssl
 import json
-import socket
 import logging
-import requests
+import binascii
 from os import path
 from getpass import getpass
+import requests_raw as requests
 from collections import defaultdict
 from multiprocessing.pool import ThreadPool
 from requests.compat import urlparse, urljoin, quote_plus
@@ -14,10 +14,11 @@ from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
 from f5_waf_tester.bigip import ASM
 
-__version__ = "0.1.1b"
+__version__ = "0.2.0"
 __folder__ = path.abspath(path.dirname(__file__))
 __app_name__ = path.basename(__folder__)
 
+TEST_ID = binascii.hexlify(os.urandom(16)).decode()
 CONFIG_TEMPLATE = {
     "big-ip": {
         "host": "",
@@ -93,66 +94,53 @@ class F5WAFTester(object):
 
     def test_vector(self, url, test, vector, expected_result):
         res = ""
-        res_encoding = "utf-8"
         error = None
-        user_agent = "%s %s" % (__app_name__, __version__)
+        user_agent = "%s/%s" % (__app_name__, __version__)
+        request_args = {
+            "verify": False,
+            "method": vector.get("method", "GET"),
+            "url": urljoin(url, "/%s/" % __app_name__),
+            "params": {},
+            "headers": {
+                "User-Agent": user_agent,
+                "X-Test-ID": TEST_ID,
+                "X-Request-ID": f"{test['id']}/{vector['applies_to']}",
+            }
+        }
         try:
             if vector["applies_to"] == "request":
+                request_args["method"] = "requests-raw"
+                headers = request_args["headers"]
                 url_parsed = urlparse(url)
-                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                port = url_parsed.port
-                if not port:
-                    if url_parsed.scheme == "http":
-                        port = 80
-                    elif url_parsed.scheme == "https":
-                        port = 443
-
-                if url_parsed.scheme == "https":
-                    s = ssl.wrap_socket(s)
-                s.connect((url_parsed.hostname, port))
-                req = vector["payload"].format(
+                data = vector["payload"].format(
                     hostname=url_parsed.hostname,
-                    user_agent=user_agent,
-                    appname=__app_name__
+                    user_agent=headers["User-Agent"],
+                    test_id=headers["X-Test-ID"],
+                    request_id=headers["X-Request-ID"],
                 ).encode('utf-8')
-                s.sendall(req)
-                res = s.recv(4096)
-                if res.endswith(b"\r\n\r\n"):
-                    res += s.recv(4096)
-                s.close()
-            else:
-                request_args = {
-                    "verify": False,
-                    "method": vector.get("method", "GET"),
-                    "url": urljoin(url, "/%s/" % __app_name__),
-                    "params": {},
-                    "headers": {
-                        "User-Agent": user_agent
-                    }
+                request_args["data"] = data
+            elif vector["applies_to"] == "parameter":
+                request_args["params"] = {
+                    vector.get("key", "%s_%s" % (__app_name__, vector["applies_to"])): vector["payload"]
                 }
-                if vector["applies_to"] == "parameter":
-                    request_args["params"] = {
-                        vector.get("key", "%s_%s" % (__app_name__, vector["applies_to"])): vector["payload"]
-                    }
-                elif vector["applies_to"] == "header":
-                    request_args["headers"] = {
-                        vector.get("key", "%s_%s" % (__app_name__, vector["applies_to"])): vector["payload"]
-                    }
-                elif vector["applies_to"] == "url":
-                    request_args["url"] = urljoin(request_args["url"], quote_plus(vector["payload"], safe='/'))
+            elif vector["applies_to"] == "header":
+                request_args["headers"] = {
+                    vector.get("key", "%s_%s" % (__app_name__, vector["applies_to"])): vector["payload"]
+                }
+            elif vector["applies_to"] == "url":
+                request_args["url"] = urljoin(request_args["url"], quote_plus(vector["payload"], safe='/'))
 
-                res = requests.request(**request_args).content
+            res = requests.request(**request_args)
         except Exception as ex:
             error = ex
-            print(error)
 
-        re_res = re.search(self.config['blocking_regex'].encode(res_encoding), res)
+        re_res = re.search(self.config['blocking_regex'], res.text)
         result = {
             "test": test,
             "vector": vector,
             "error": error,
             "expected_result": expected_result,
-            "result": re_res.group('id').decode(res_encoding) if re_res else None
+            "result": re_res.group('id') if re_res else None
         }
 
         self.logger.info("Test {id}/{applies_to} {result}".format(
@@ -164,6 +152,7 @@ class F5WAFTester(object):
 
     def _get_report_without_reasons(self):
         report = {
+            "test_id": TEST_ID,
             "summary": {
                 "fail": 0,
                 "pass": 0,

@@ -338,10 +338,10 @@
     "vectors": [
       {
         "applies_to": "url",
-        "payload": "/backup/",
+        "payload": "/proc/1/cgroup",
         "expected_result": {
           "type": "signature",
-          "value": "200001404"
+          "value": "200010084"
         }
       }
     ]
@@ -375,7 +375,7 @@
         "payload": "test.aspx::$DATA",
         "expected_result": {
           "type": "signature",
-          "value": "200001404"
+          "value": "200016004"
         }
       }
     ]
