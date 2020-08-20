@@ -1,602 +1,673 @@
-[
-  {
-    "id": "100000001",
+{
+  "100000001": {
     "name": "HTML Tag Injection - script",
     "attack_type": "Cross Site Scripting (XSS)",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "<script>var a = 1;</script>",
-        "expected_result": {
-          "type": "signature",
-          "value": "200001088"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "<script>var a = 1;</script>"
       },
-      {
-        "applies_to": "url",
-        "payload": "<script>var a = 1;</script>",
-        "expected_result": {
-          "type": "signature",
-          "value": "200000099"
-        }
+      "url": {
+        "payload": "<script>var a = 1;</script>"
       },
-      {
-        "applies_to": "header",
-        "payload": "<script>var a = 1;</script>",
-        "expected_result": {
-          "type": "signature",
-          "value": "200000097"
-        }
+      "header": {
+        "payload": "<script>var a = 1;</script>"
       }
-    ]
+    }
   },
-  {
-    "id": "100000002",
+  "100000002": {
     "name": "HTML Attribute Injection - onmouseover",
     "attack_type": "Cross Site Scripting (XSS)",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "' onmouseover='var a=1;",
-        "expected_result": {
-          "type": "signature",
-          "value": "200101162"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "' onmouseover='var a=1;"
       },
-      {
-        "applies_to": "url",
-        "payload": "' onmouseover='var a=1;",
-        "expected_result": {
-          "type": "signature",
-          "value": "200101164"
-        }
+      "url": {
+        "payload": "' onmouseover='var a=1;"
       },
-      {
-        "applies_to": "header",
-        "payload": "' onmouseover='var a=1;",
-        "expected_result": {
-          "type": "signature",
-          "value": "200101163"
-        }
+      "header": {
+        "payload": "' onmouseover='var a=1;"
       }
-    ]
+    }
   },
-  {
-    "id": "100000003",
+  "100000003": {
     "name": "JavaScript Injection - eval",
     "attack_type": "Cross Site Scripting (XSS)",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "x=eval;x(1)",
-        "expected_result": {
-          "type": "signature",
-          "value": "200001405"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "x=eval;x(1)"
       },
-      {
-        "applies_to": "url",
-        "payload": "x=eval;x(1)",
-        "expected_result": {
-          "type": "signature",
-          "value": "200001404"
-        }
+      "url": {
+        "payload": "x=eval;x(1)"
       },
-      {
-        "applies_to": "header",
-        "payload": "x=eval;x(1)",
-        "expected_result": {
-          "type": "signature",
-          "value": "200001406"
-        }
+      "header": {
+        "payload": "x=eval;x(1)"
       }
-    ]
+    }
   },
-  {
-    "id": "100000004",
+  "100000004": {
     "name": "SQL-Injection - integer field UNION",
     "attack_type": "SQL-Injection",
     "system": "General Database",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "9999999 UNION SELECT 1,2",
-        "expected_result": {
-          "type": "signature",
-          "value": "200002611"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "9999999 UNION SELECT 1,2"
       },
-      {
-        "applies_to": "url",
-        "payload": "9999999 UNION SELECT 1,2",
-        "expected_result": {
-          "type": "signature",
-          "value": "200002495"
-        }
+      "url": {
+        "payload": "9999999 UNION SELECT 1,2"
       },
-      {
-        "applies_to": "header",
-        "payload": "9999999 UNION SELECT 1,2",
-        "expected_result": {
-          "type": "signature",
-          "value": "200002554"
-        }
+      "header": {
+        "payload": "9999999 UNION SELECT 1,2"
       }
-    ]
+    }
   },
-  {
-    "id": "100000005",
+  "100000005": {
     "name": "Blind SQL-Injection",
     "attack_type": "SQL-Injection",
     "system": "General Database",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "AND SELECT SUBSTRING(column_name,1,1) FROM information_schema.columns > 'A'",
-        "expected_result": {
-          "type": "signature",
-          "value": "200002045"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "AND SELECT SUBSTRING(column_name,1,1) FROM information_schema.columns > 'A'"
       },
-      {
-        "applies_to": "url",
-        "payload": "AND SELECT SUBSTRING(column_name,1,1) FROM information_schema.columns > 'A'",
-        "expected_result": {
-          "type": "signature",
-          "value": "200001404"
-        }
+      "url": {
+        "payload": "AND SELECT SUBSTRING(column_name,1,1) FROM information_schema.columns > 'A'"
       },
-      {
-        "applies_to": "header",
-        "payload": "AND SELECT SUBSTRING(column_name,1,1) FROM information_schema.columns > 'A'",
-        "expected_result": {
-          "type": "signature",
-          "value": "200002546"
-        }
+      "header": {
+        "payload": "AND SELECT SUBSTRING(column_name,1,1) FROM information_schema.columns > 'A'"
       }
-    ]
+    }
   },
-  {
-    "id": "100000006",
+  "100000006": {
     "name": "Authentication Bypass SQL Injection",
     "attack_type": "SQL-Injection",
     "system": "General Database",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "or 1=1 --",
-        "expected_result": {
-          "type": "signature",
-          "value": "200002835"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "' or 1=1 -- '"
       },
-      {
-        "applies_to": "url",
-        "payload": "or\t1=1\t--",
-        "expected_result": {
-          "type": "signature",
-          "value": "200002837"
-        }
+      "url": {
+        "encode": false,
+        "payload": "' or 1=1 -- '"
       },
-      {
-        "applies_to": "header",
-        "payload": "or 1=1 --",
-        "expected_result": {
-          "type": "signature",
-          "value": "200002836"
-        }
+      "header": {
+        "payload": "' or 1=1 -- '"
       }
-    ]
+    }
   },
-  {
-    "id": "100000007",
+  "100000007": {
     "name": "MongoDB Injection - db.getCollectionNames()",
     "attack_type": "NoSQL Injection",
     "system": "MongoDB",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "{$where: function() { return db.getCollectionNames(); }}",
-        "expected_result": {
-          "type": "signature",
-          "value": "200002783"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "{$where: function() { return db.getCollectionNames(); }}"
       },
-      {
-        "applies_to": "url",
-        "payload": "{$where: function() { return db.getCollectionNames(); }}",
-        "expected_result": {
-          "type": "signature",
-          "value": "200002785"
-        }
+      "url": {
+        "payload": "{$where: function() { return db.getCollectionNames(); }}"
       },
-      {
-        "applies_to": "header",
-        "payload": "{$where: function() { return db.getCollectionNames(); }}",
-        "expected_result": {
-          "type": "signature",
-          "value": "200002784"
-        }
+      "header": {
+        "payload": "{$where: function() { return db.getCollectionNames(); }}"
       }
-    ]
+    }
   },
-  {
-    "id": "100000008",
+  "100000008": {
     "name": "Linux Command Execution - uname()",
     "attack_type": "Command Execution",
     "system": "Unix/Linux",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "& uname",
-        "expected_result": {
-          "type": "signature",
-          "value": "200003921"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "& uname"
       },
-      {
-        "applies_to": "url",
-        "payload": "& uname",
-        "expected_result": {
-          "type": "signature",
-          "value": "200100315"
-        }
+      "url": {
+        "payload": "& uname"
       },
-      {
-        "applies_to": "header",
-        "payload": "& uname",
-        "expected_result": {
-          "type": "signature",
-          "value": "200003412"
-        }
+      "header": {
+        "payload": "& uname"
       }
-    ]
+    }
   },
-  {
-    "id": "100000009",
-    "name": "Windows Command Exeuction - powershell",
+  "100000009": {
+    "name": "Windows Command Execution - powershell",
     "attack_type": "Command Execution",
     "system": "Microsoft Windows",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "%26%20powershell-WindowStyle%20Hidden%20-encode",
-        "expected_result": {
-          "type": "signature",
-          "value": "200003573"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "& powershell -WindowStyle Hidden -encode"
       },
-      {
-        "applies_to": "url",
-        "payload": "%26%20powershell-WindowStyle%20Hidden%20-encode",
-        "expected_result": {
-          "type": "signature",
-          "value": "200003575"
-        }
+      "url": {
+        "payload": "& powershell -WindowStyle Hidden -encode"
       },
-      {
-        "applies_to": "header",
-        "payload": "& powershell-WindowStyle Hidden -encode",
-        "expected_result": {
-          "type": "signature",
-          "value": "200003574"
-        }
+      "header": {
+        "payload": "& powershell -WindowStyle Hidden -encode"
       }
-    ]
+    }
   },
-  {
-    "id": "100000010",
+  "100000010": {
     "name": "Path Traversal",
     "attack_type": "Path Traversal",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "../../etc/passwd",
-        "expected_result": {
-          "type": "signature",
-          "value": "200003054"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "../../etc/passwd"
       },
-      {
-        "applies_to": "request",
-        "payload": "GET /../../etc/passwd HTTP/1.1\r\nHost: {hostname}\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: {user_agent}\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: en-US,en;q=0.9\r\n\r\n",
-        "expected_result": {
-          "type": "evasion",
-          "value": "Directory traversals"
-        }
+      "request": {
+        "payload": "GET /../../etc/passwd HTTP/1.1\r\n${extra_headers}\r\n\r\n"
       },
-      {
-        "applies_to": "header",
-        "payload": "../../etc/passwd",
-        "expected_result": {
-          "type": "signature",
-          "value": "200003055"
-        }
+      "header": {
+        "payload": "../../etc/passwd"
       }
-    ]
+    }
   },
-  {
-    "id": "100000011",
+  "100000011": {
     "name": "Predictable Resource Location",
     "attack_type": "Predictable Resource Location",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "url",
-        "payload": "/backup/",
-        "expected_result": {
-          "type": "signature",
-          "value": "200001404"
-        }
+    "vectors": {
+      "url": {
+        "payload": "/proc/1/cgroup"
       }
-    ]
+    }
   },
-  {
-    "id": "100000012",
+  "100000012": {
     "name": "Null in request",
-    "attack_type": "HTTP Protocol Compliance",
+    "attack_type": "HTTP Parser Attack",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "exploit.php\u0000.jpg",
-        "expected_result": {
-          "type": "violation",
-          "value": "HTTP protocol compliance failed"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "exploit.php\u0000.jpg"
       }
-    ]
+    }
   },
-  {
-    "id": "100000013",
+  "100000013": {
     "name": "Alternative Datastream Access",
     "attack_type": "Detection Evasion",
     "system": "Microsoft Windows",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "url",
-        "payload": "test.aspx::$DATA",
-        "expected_result": {
-          "type": "signature",
-          "value": "200001404"
-        }
+    "vectors": {
+      "url": {
+        "payload": "test.aspx::$DATA"
       }
-    ]
+    }
   },
-  {
-    "id": "100000014",
-    "name": "Insecure Deserialization - node.js",
+  "100000014": {
+    "name": "Insecure Deserialization - Node.js",
     "attack_type": "Insecure Deserialization",
-    "system": "node.js",
+    "system": "Node.js",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "_$$ND_FUNC$$_function (){require('child_process').exec('ls /', function(error, stdout, stderr) { console.log(stdout) });}()",
-        "expected_result": {
-          "type": "signature",
-          "value": "200004282"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "_$$ND_FUNC$$_function (){require('child_process').exec('ls /', function(error, stdout, stderr) { console.log(stdout) });}()"
       },
-      {
-        "applies_to": "url",
-        "payload": "_$$ND_FUNC$$_function (){require('child_process').exec('ls /', function(error, stdout, stderr) { console.log(stdout) });}()",
-        "expected_result": {
-          "type": "signature",
-          "value": "200004284"
-        }
+      "url": {
+        "payload": "_$$ND_FUNC$$_function (){require('child_process').exec('ls /', function(error, stdout, stderr) { console.log(stdout) });}()"
       },
-      {
-        "applies_to": "header",
-        "payload": "_$$ND_FUNC$$_function (){require('child_process').exec('ls /', function(error, stdout, stderr) { console.log(stdout) });}()",
-        "expected_result": {
-          "type": "signature",
-          "value": "200004283"
-        }
+      "header": {
+        "payload": "_$$ND_FUNC$$_function (){require('child_process').exec('ls /', function(error, stdout, stderr) { console.log(stdout) });}()"
       }
-    ]
+    }
   },
-  {
-    "id": "100000015",
+  "100000015": {
     "name": "Insecure Deserialization - PHP",
     "attack_type": "Insecure Deserialization",
     "system": "PHP",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "O:6:\" attack \":3:{s:4:\" file \";s:9:\" shell.php \";s:4:\" data \";s:19:\" <  ? php phpinfo();?  > \";}",
-        "expected_result": {
-          "type": "signature",
-          "value": "200004188"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "O:6:\" attack \":3:{s:4:\" file \";s:9:\" shell.php \";s:4:\" data \";s:19:\" <  ? php phpinfo();?  > \";}"
       },
-      {
-        "applies_to": "url",
-        "payload": "O:6:\" attack \":3:{s:4:\" file \";s:9:\" shell.php \";s:4:\" data \";s:19:\" <  ? php phpinfo();?  > \";}",
-        "expected_result": {
-          "type": "signature",
-          "value": "200004190"
-        }
+      "url": {
+        "payload": "O:6:\" attack \":3:{s:4:\" file \";s:9:\" shell.php \";s:4:\" data \";s:19:\" <  ? php phpinfo();?  > \";}"
       },
-      {
-        "applies_to": "header",
-        "payload": "O:6:\" attack \":3:{s:4:\" file \";s:9:\" shell.php \";s:4:\" data \";s:19:\" <  ? php phpinfo();?  > \";}",
-        "expected_result": {
-          "type": "signature",
-          "value": "200004189"
-        }
+      "header": {
+        "payload": "O:6:\" attack \":3:{s:4:\" file \";s:9:\" shell.php \";s:4:\" data \";s:19:\" <  ? php phpinfo();?  > \";}"
       }
-    ]
+    }
   },
-  {
-    "id": "100000016",
+  "100000016": {
     "name": "Illegal Method TRACE",
     "attack_type": "Information Leakage",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "request",
-        "payload": "TRACE / HTTP/1.1\r\nHost: {hostname}\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: {user_agent}\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: en-US,en;q=0.9\r\n\r\n",
-        "expected_result": {
-          "type": "violation",
-          "value": "Illegal Method"
-        }
+    "vectors": {
+      "request": {
+        "payload": "TRACE /${title}/ HTTP/1.1\r\n${extra_headers}\r\n\r\n"
       }
-    ]
+    }
   },
-  {
-    "id": "100000017",
+  "100000017": {
     "name": "Malformed JSON",
     "attack_type": "JSON Parser Attack",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "request",
-        "payload": "POST / HTTP/1.1\r\nHost: {hostname}\r\nContent-Type: application/json\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: {user_agent}\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: en-US,en;q=0.9\r\nContent-Length: 11\r\n\r\n{{0xF5:\"F5\"}}",
-        "expected_result": {
-          "type": "violation",
-          "value": "Malformed JSON data"
-        }
+    "vectors": {
+      "request": {
+        "payload": "POST /${title}/ HTTP/1.1\r\n${extra_headers}\r\nContent-Type: application/json\r\nContent-Length: 11\r\n\r\n{{0xF5:\"F5\"}}"
       }
-    ]
+    }
   },
-  {
-    "id": "100000018",
+  "100000018": {
     "name": "Malformed XML",
     "attack_type": "XML Parser Attack",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "request",
-        "payload": "POST / HTTP/1.1\r\nHost: {hostname}\r\nContent-Type: application/xml\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: {user_agent}\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: en-US,en;q=0.9\r\nContent-Length: 15\r\n\r\n<xml><f5></xml>",
-        "expected_result": {
-          "type": "violation",
-          "value": "Malformed XML data"
-        }
+    "vectors": {
+      "request": {
+        "payload": "POST /${title}/ HTTP/1.1\r\n${extra_headers}\r\nContent-Type: application/xml\r\nContent-Length: 15\r\n\r\n<xml><f5></xml>"
       }
-    ]
+    }
   },
-  {
-    "id": "100000019",
+  "100000019": {
     "name": "Cookie not RFC-compliant",
     "attack_type": "HTTP Parser Attack",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "request",
-        "payload": "GET / HTTP/1.1\r\nHost: {hostname}\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: {user_agent}\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: en-US,en;q=0.9\r\nCookie: =F5\r\n\r\n",
-        "expected_result": {
-          "type": "violation",
-          "value": "Cookie not RFC-compliant"
-        }
+    "vectors": {
+      "request": {
+        "payload": "GET /${title}/ HTTP/1.1\r\n${extra_headers}\r\nCookie: =F5\r\n\r\n"
       }
-    ]
+    }
   },
-  {
-    "id": "100000020",
+  "100000020": {
     "name": "Cookie not RFC-compliant",
     "attack_type": "HTTP Parser Attack",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "request",
-        "payload": "GET / HTTP/1.1\r\nHost: {hostname}\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: {user_agent}\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: en-US,en;q=0.9\r\nCookie: =F5\r\n\r\n",
-        "expected_result": {
-          "type": "violation",
-          "value": "Cookie not RFC-compliant"
-        }
+    "vectors": {
+      "request": {
+        "payload": "GET /${title}/ HTTP/1.1\r\n${extra_headers}\r\nCookie: =F5\r\n\r\n"
       }
-    ]
+    }
   },
-  {
-    "id": "100000021",
+  "100000021": {
     "name": "Wrong HTTP Protocol Version",
     "attack_type": "HTTP Parser Attack",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "request",
-        "payload": "GET / HTTP/F.5\r\nHost: {hostname}\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: {user_agent}\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: en-US,en;q=0.9\r\n\r\n",
-        "expected_result": {
-          "type": "violation",
-          "value": "HTTP protocol compliance failed"
-        }
+    "vectors": {
+      "request": {
+        "payload": "GET /${title}/ HTTP/F.5\r\n${extra_headers}\r\n\r\n"
       }
-    ]
+    }
   },
-  {
-    "id": "100000022",
+  "100000022": {
     "name": "HTTP Desync Attack Attempt",
-    "attack_type": "HTTP Request Smuggling",
+    "attack_type": "HTTP Request Smuggling Attack",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "request",
-        "payload": "POST / HTTP/1.1\r\nHost: {hostname}\r\nContent-Type: application/x-www-form-urlencoded\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: {user_agent}\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: en-US,en;q=0.9\r\nTransfer-Encoding: chunked\r\nContent-Length: 9\r\n\r\n0xF5=\"F5\"\r\n\r\n",
-        "expected_result": {
-          "type": "signature",
-          "value": "200018061"
-        }
+    "vectors": {
+      "request": {
+        "support_http_proxy": false,
+        "payload": "POST /${title}/ HTTP/1.1\r\n${extra_headers}\r\nContent-Type: application/x-www-form-urlencoded\r\nTransfer-Encoding: chunked\r\nContent-Length: 9\r\n\r\n0xF5=\"F5\"\r\n\r\n"
       }
-    ]
+    }
   },
-  {
-    "id": "100000023",
+  "100000023": {
     "name": "SSRF attempt (AWS Metadata Server)",
-    "attack_type": "Server Side Request Forgery",
+    "attack_type": "Server-Side Request Forgery (SSRF)",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "parameter",
-        "payload": "http://169.254.169.254/latest/meta-data/iam/security-credentials/role-name",
-        "expected_result": {
-          "type": "signature",
-          "value": "200018040"
-        }
+    "vectors": {
+      "parameter": {
+        "payload": "http://169.254.169.254/latest/meta-data/iam/security-credentials/role-name"
       }
-    ]
+    }
   },
-  {
-    "id": "100000024",
+  "100000024": {
     "name": "SSRF attempt - Local network IP range 10.x.x.x",
-    "attack_type": "Server Side Request Forgery",
+    "attack_type": "Server-Side Request Forgery (SSRF)",
     "system": "All systems",
     "CVE": "",
-    "vectors": [
-      {
-        "applies_to": "request",
-        "payload": "GET http://10.240.200.172/ HTTP/1.1\r\nHost: {hostname}\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: {user_agent}\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: en-US,en;q=0.9\r\n\r\n",
-        "expected_result": {
-          "type": "signature",
-          "value": "200020201"
-        }
+    "vectors": {
+      "request": {
+        "support_http_proxy": false,
+        "payload": "GET http://10.240.200.172/${title}/ HTTP/1.1\r\n${extra_headers}\r\n\r\n"
       }
-    ]
+    }
+  },
+  "100000025": {
+    "name": "URL Encoded Payload in QS",
+    "attack_type": "Detection Evasion",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "request": {
+        "payload": "GET /${title}/?UNION%20SELECT HTTP/1.0\r\n${extra_headers}\r\n\r\n"
+      }
+    }
+  },
+  "100000026": {
+    "name": "URL Encoded Payload in Host Header",
+    "attack_type": "Detection Evasion",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "request": {
+        "payload": "GET /${title}/ HTTP/1.0\r\nHost: UNION%20SELECT\r\nUser-Agent: ${user_agent}\r\nX-Test-ID: ${test_id}\r\nX-Request-ID: ${request_id}\r\n\r\n"
+      }
+    }
+  },
+  "100000027": {
+    "name": "URL Encoded Payload in Host Header",
+    "attack_type": "Detection Evasion",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "request": {
+        "payload": "GET /${title}/ HTTP/1.0\r\nHost: UNION%20SELECT\r\nUser-Agent: ${user_agent}\r\nX-Test-ID: ${test_id}\r\nX-Request-ID: ${request_id}\r\n\r\n"
+      }
+    }
+  },
+  "800000000": {
+    "name": "[False] del Execution Attempt",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "DEL0x20MORO"
+      }
+    }
+  },
+  "800000001": {
+    "name": "[False] python Execution Attempt",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "https://app.pluralsight.com/data/signin/pingfederate?redirect=/courses/building-sentiment-analysis-systems-python"
+      }
+    }
+  },
+  "800000002": {
+    "name": "[False] copy Execution Attempt",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "Copy of warehouse line info 9.30.19.xlsx"
+      }
+    }
+  },
+  "800000003": {
+    "name": "[False] ll Execution Attempt",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "We&rsquo;ll be back soon!"
+      }
+    }
+  },
+  "800000004": {
+    "name": "[False] at Execution Attempt",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": ";até dezembro"
+      }
+    }
+  },
+  "800000005": {
+    "name": "[False] verify Execution Attempt",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "true|C|-1|Sign0x20in|-|1573842579884|42427163_450|https://qap3-secure01a.chase.com/privacy|Verify0x20your0x20identity0x20-0x20CCPA0x20-0x20chase.com|"
+      }
+    }
+  },
+  "800000006": {
+    "name": "[False] SQL-INJ \"SELECT IF()\"",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "tSelectWidget\\\">0x20<select0x20name=\\\"BV_TrackingTag_QA_Display_Sort\\\"0x20onchange=\\\"if(window.BVAnalyticsTracker){BVAnalyticsTracker.fir"
+      }
+    }
+  },
+  "800000007": {
+    "name": "[False] PHP remote file include attempt - file://",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "header": {
+        "name": "Origin",
+        "payload": "file://"
+      }
+    }
+  },
+  "800000008": {
+    "name": "[False] Generic Remote File/Path Include Attempt",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "url": {
+        "encode": false,
+        "payload": "/openid/authorize?client_id=8e50adb3-6ba3-48e8-969e-662aba5a8825&redirect_uri=https://apps.datev.de/dcal/loginRedirect.html&response_type=id_token token&scope=openid profile datev:all&state=62d099225a5d4342bea4af4284804e10&nonce=ce68efa0d8a14195b0bf006bd962be99"
+      }
+    }
+  },
+  "800000009": {
+    "name": "[False] Unix hidden (dot-file) access",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "/openid/.well-known/openid-configuration"
+      }
+    }
+  },
+  "800000010": {
+    "name": "[False] top Execution Attempt",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "dtvegdev=&c.&a.&activitymap.&page=https://www.datev.de/web/de/top-themen/top-themen-n/&link=Startseite&region=main-nav&.activit"
+      }
+    }
+  },
+  "800000011": {
+    "name": "[False] sort Execution Attempt",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "/\u0083\u0060/sort/"
+      }
+    }
+  },
+  "800000012": {
+    "name": "[False] SQL-INJ REPLACE INTO",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "FOR KEY REPLACE SOLD FOR 299.00. OR YOU CAN FAX IT INTO. FAX#"
+      }
+    }
+  },
+  "800000013": {
+    "name": "[False] XXE",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "NEED TO COMPETE WITH CAPITOL ONE AT 9.49 @72 AND 60 IS POSSIBLE TOO, THANK YOU</comments><driver_license_no>K02099137</driver_license_no>"
+      }
+    }
+  },
+  "800000014": {
+    "name": "[False] SQL-INJ expressions like 'or 1=1'",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "<comment line=\"1\">29300 and 33300 is book values.</comment><date>2018-08-31</date>"
+      }
+    }
+  },
+  "800000015": {
+    "name": "[False] SQL-INJ expressions like 'or 1=1'",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "or Kelly (wholesale or. clean trade) --"
+      }
+    }
+  },
+  "800000016": {
+    "name": "[False] SQL-INJ \"' --\" (SQL comment)",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "Tax ID ends in \"3\" not \"8\" -- verified"
+      }
+    }
+  },
+  "800000017": {
+    "name": "[False] Unicode Fullwidth ASCII variant",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "email_address%3EBUFF1950"
+      }
+    }
+  },
+  "800000018": {
+    "name": "[False] Label",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "HOLLY TAG &amp; LABEL</employed_by&"
+      }
+    }
+  },
+  "800000019": {
+    "name": "[False] XPath Injection \"string()\"",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "THE CONTRACT HAS TWO NAMES, JACQUELYN STRING (APPLICANT). KYLE KEATING (CO-APPLIACNT)"
+      }
+    }
+  },
+  "800000020": {
+    "name": "[False] Alert",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "with him to clear alert? (334)"
+      }
+    }
+  },
+  "800000021": {
+    "name": "[False] SQL-INJ group by having",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": ";BACHMAN AUTO GROUP&lt;/employed_by&gt;&lt;work_phone_no&gt;5024996161&lt;/work_phone_no&gt;&lt;years_employed&gt;4&lt;/years_employed&gt;&lt;months_employed&gt;8&lt;/months_employed&gt;&lt;occupation&gt;ACCOUNT MANAGER&lt;/occupation&gt;&lt;salary type=\"monthly\"&gt;3728&lt;/salary&gt;&lt;/employment_data&gt;&lt;other_income&gt;0&lt;/other_income&gt;&lt;comments&gt;Sam Works Here At The Dealership. He Is Having Twins And Trying To Upgrade To A Small Suv.&lt;/comments"
+      }
+    }
+  },
+  "800000022": {
+    "name": "[False] SQL-INJ \"SELECT FROM\"",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "<employed_by>SELECT QUOTE INS.</employed_by><work_phone_no>7203784232</work_phone_no><years_employed>0</years_employed><months_employed>6</months_employed><occupation>PRODUCER</occupation></employment_data><comments>PRIOR TO SELECT QUOTE HE WAS A TEACHER FOR TWO YEARS AT SOUTHERN AVE. CHARTER SCHOOL. THE CURRENT OPEN AUTO FROM TD AUTO IS A WORK VEHICLE. TY, PAUL SEAGER</comments><driver_license_no/><driver_license_state/><other_phone_no>5129698983</other_phone_no></applicant_data><vehicle_data><certified_used/><vin>5FNYF4H25BB090412</vin><book_year>2011</book_year><book_make>HONDA</book_make><model>PILOT-V6</model><trim>UTILITY 4D LX 4WD</trim><chrome_style_id>325084</chrome_style_id><chrome_year>2011</chrome_year><chrome_make>HONDA</chrome_make><chrome_model>PILOT</chrome_model><chrome_trim>4WD 4DR LX</chrome_trim><bookout>N</bookout><bookout_options/></vehicle_data><product_data><term_months>66</term_months><cash_selling_price>12400</cash_selling_price><ttl_estimate>28</ttl_estimate><cash_down>1000</cash_down><unpaid_balance>13100</unpaid_balance><creditlife/><acc_health_insurance/><est_amt_financed>13100</est_amt_financed><used_car_value>10964</used_car_value><used_car_book>K</used_car_book><used_car_mileage>115528</used_car_mileage><msrp/><lender_program/><sales_tax>1073</sales_tax><other_finance_fees>599</other_finance_fees><gap/><other_fees/><wholesale_value type=\"na\" condition=\"na\">"
+      }
+    }
+  },
+  "800000023": {
+    "name": "[False] HTTP Headers Injection",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "\"[controller:flyout]\"\nTypeError: Cannot read property"
+      }
+    }
+  },
+  "800000024": {
+    "name": "[False] WordPress load-scripts.php/load-styles.php DoS",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "url": {
+        "payload": "load-scripts.php/load-styles.php"
+      }
+    }
+  },
+  "800000025": {
+    "name": "[False] XXE (2)",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "parameter": {
+        "payload": "<!DOCTYPE Finvoiceack SYSTEM \"Finvoiceack.dtd\">"
+      }
+    }
+  },
+  "800000026": {
+    "name": "[False] SQL-INJ \"SELECT FROM\"",
+    "attack_type": "False Positive",
+    "system": "All systems",
+    "CVE": "",
+    "vectors": {
+      "header": {
+        "payload": "the entry SELECT From 1 (with our without lowercase)"
+      }
+    }
   }
-]
+}

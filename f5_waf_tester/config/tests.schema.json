@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSON schema for f5-waf-tester tests.json file",
+  "definitions": {
+    "vector": {
+      "type": "object",
+      "properties": {
+        "payload": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "support_http_proxy": {
+          "type": "boolean"
+        },
+        "encode": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "payload"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "patternProperties": {
+    "^[0-9]{9}$": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "attack_type": {
+          "enum": [
+            "Server-Side Template Injection",
+            "Insecure File Upload",
+            "NoSQL Injection",
+            "Insecure Deserialization",
+            "XML External Entities (XXE)",
+            "Server-Side Request Forgery (SSRF)",
+            "Cache Poisoning",
+            "WebSocket Parser Attack",
+            "GWT Parser Attack",
+            "Cross-site Request Forgery",
+            "JSON Parser Attack",
+            "Malicious File Upload",
+            "Web Scraping",
+            "HTTP Response Splitting",
+            "Session Hijacking",
+            "XML Parser Attack",
+            "Parameter Tampering",
+            "Injection Attempt",
+            "Brute Force Attack",
+            "Forceful Browsing",
+            "HTTP Request Smuggling Attack",
+            "HTTP Parser Attack",
+            "Other Application Activity",
+            "Denial of Service",
+            "Cross Site Scripting (XSS)",
+            "SQL-Injection",
+            "Command Execution",
+            "Server Side Code Injection",
+            "LDAP Injection",
+            "XPath Injection",
+            "Path Traversal",
+            "Directory Indexing",
+            "Information Leakage",
+            "Predictable Resource Location",
+            "Buffer Overflow",
+            "Authentication/Authorization Attacks",
+            "Abuse of Functionality",
+            "Vulnerability Scan",
+            "Detection Evasion",
+            "Trojan/Backdoor/Spyware",
+            "Other Application Attacks",
+            "Non-browser Client",
+            "Remote File Include",
+            "False Positive"
+          ]
+        },
+        "system": {
+          "enum": [
+            "ReactJS",
+            "AngularJS",
+            "JavaScript",
+            "Nginx",
+            "Jenkins",
+            "SharePoint",
+            "Oracle Application Server",
+            "Redis",
+            "Python",
+            "Oracle Identity Manager",
+            "Spring Boot",
+            "Jetty",
+            "CouchDB",
+            "SQLite",
+            "Joomla",
+            "JavaServer Faces (JSF)",
+            "Ruby",
+            "MongoDB",
+            "Django",
+            "Node.js",
+            "Citrix",
+            "JBoss",
+            "WordPress",
+            "jQuery",
+            "Elasticsearch",
+            "Apache Struts",
+            "XML",
+            "PostgreSQL",
+            "IBM DB2",
+            "Sybase/ASE",
+            "IBM WebSphere",
+            "Lotus Domino",
+            "Proxy Servers",
+            "SSI (Server Side Includes)",
+            "BEA Systems WebLogic Server",
+            "Apache Tomcat",
+            "Other Web Server",
+            "ASP.NET",
+            "Front Page Server Extensions (FPSE)",
+            "Macromedia JRun",
+            "CGI",
+            "Unix/Linux",
+            "Oracle",
+            "MySQL",
+            "Microsoft SQL Server",
+            "Apache",
+            "Cisco",
+            "Novell",
+            "Macromedia ColdFusion",
+            "Java Servlets/JSP",
+            "PHP",
+            "ASP",
+            "WebDAV",
+            "IIS",
+            "Microsoft Windows",
+            "Outlook Web Access",
+            "System Independent",
+            "Various systems",
+            "General Database",
+            "All systems"
+          ]
+        },
+        "CVE": {
+          "type": "string"
+        },
+        "vectors": {
+          "type": "object",
+          "properties": {
+            "request": {
+              "$ref": "#/definitions/vector"
+            },
+            "url": {
+              "$ref": "#/definitions/vector"
+            },
+            "header": {
+              "$ref": "#/definitions/vector"
+            },
+            "parameter": {
+              "$ref": "#/definitions/vector"
+            },
+            "body": {
+              "$ref": "#/definitions/vector"
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "attack_type",
+        "system",
+        "vectors"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

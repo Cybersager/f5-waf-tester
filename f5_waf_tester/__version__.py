@@ -1,0 +1,9 @@
+__title__ = 'f5-waf-tester'
+__description__ = 'Web Application Firewall Security Testing Tool'
+__url__ = 'https://github.com/f5devcentral/f5-waf-tester'
+__version__ = "1.0.0"
+__build__ = 0x010000
+__author__ = 'Tomer Zait (realgam3)'
+__author_email__ = 'realgam3@gmail.com'
+__license__ = 'Apache 2.0'
+__copyright__ = 'Copyright 2019 F5 Networks'
